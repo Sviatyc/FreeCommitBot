@@ -1,10 +1,9 @@
 const { Telegraf } = require('telegraf');
 const { createUserWithEmailAndPassword, signInWithEmailAndPassword } = require('firebase/auth');
-const { auth,  app } = require('./firebase');  
-const { getFirestore, doc, setDoc } = require('firebase/firestore');
+const { auth, db } = require('./firebase');  
+const { doc, setDoc } = require('firebase/firestore');
 require('dotenv').config();
 
-const db = getFirestore(app)
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const userStates = {};
@@ -64,7 +63,7 @@ bot.on('text', async (ctx) => {
 
         const userRef = doc(db, 'users', userId);  
         await setDoc(userRef, {
-          userId,
+          userId: '123',
           email: userState.email
         });
 
@@ -74,7 +73,7 @@ bot.on('text', async (ctx) => {
 
         const userRef = doc(db, 'users', userId);  
         await setDoc(userRef, {
-          userId,
+          userId: '123',
           email: userState.email
         }, { merge: true }); 
       }
