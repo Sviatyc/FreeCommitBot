@@ -1,9 +1,10 @@
 const { initializeApp } = require("firebase/app");
 const { getAuth } = require("firebase/auth");  
 const { getFirestore } = require("firebase/firestore");  
+require('dotenv').config();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqIHq2KdDhNViXJSSfmYJB_J-uv3i4XB0",
+  apiKey: process.env.FIREBASE_API,
   authDomain: "freecommit-d464d.firebaseapp.com",
   projectId: "freecommit-d464d",
   storageBucket: "freecommit-d464d.appspot.com", 
